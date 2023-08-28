@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  orders:
+    build: ./orders
+    command: npm start
+    ports:
+      - "3007:3007"
+    volumes:
+      - .:/usr/app
+    networks:
+      - backend
+
+  user:
+    build: ./user
+    command: npm start
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/app
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
